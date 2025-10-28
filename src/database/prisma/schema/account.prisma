@@ -1,0 +1,78 @@
+model User {
+  id                String             @id @default(uuid())
+  email             String             @unique
+  password          String
+  role              UserRole
+  schoolId          String             @default("NA")  
+  verified          Boolean            @default(false)
+  refreshToken      String?            @db.Text
+  verificationToken String?            @db.Text
+  createdAt         DateTime           @default(now())
+  updatedAt         DateTime           @updatedAt @default(now())
+  parentProfile     ParentProfile?
+  staffProfile      StaffProfile?
+  studentProfile    StudentProfile?
+  superAdminProfile SuperAdminProfile?
+
+  // Back relations
+  school  School  @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+
+}
+
+model StudentProfile {
+  id           String    @id @default(uuid())
+  userId       String    @unique
+  firstName    String
+  lastName     String
+  gender       String?
+  dob          DateTime?
+  parents      String?
+  currentClass String?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt @default(now())
+  user         User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model StaffProfile {
+  id         String    @id @default(uuid())
+  userId     String    @unique
+  firstName  String
+  lastName   String
+  gender       String?
+  department String?
+  hireDate   DateTime?
+  subRoles   Json
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt @default(now())
+  user       User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model ParentProfile {
+  id        String   @id @default(uuid())
+  userId    String   @unique
+  firstName String
+  lastName  String
+  gender       String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model SuperAdminProfile {
+  id        String   @id @default(uuid())
+  userId    String   @unique
+  firstName String
+  lastName  String
+  gender       String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+/// ACCOUNT SCHEMA FILE
+enum UserRole {
+  student
+  staff
+  parent
+  super_admin
+}

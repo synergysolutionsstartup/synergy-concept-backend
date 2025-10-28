@@ -1,0 +1,29 @@
+// DATAASE INDEX.TS FILE
+// Export out the correct database implementation you want the application to use
+// either mongoose/mongodb or prisma
+
+import { PrismaClient, Prisma } from "@src/database/client";
+import {
+  connectDB,
+  dbClient,
+  shutdownDB,
+} from "@src/database/prisma/connection";
+
+type PrismaType  = typeof Prisma
+export type { Prisma } from "@src/database/client";
+export interface Database {
+  connectDB: () => Promise<void>;
+  dbClient: PrismaClient;
+  Prisma: PrismaType,
+  shutdownDB: () => Promise<void>;
+  //   dbClient: unknown; // fallback if you don’t want strict typing
+}
+
+export const db: Database = {
+  connectDB: () => connectDB(),
+  dbClient: dbClient,
+  shutdownDB,
+  Prisma,
+};
+
+

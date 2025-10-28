@@ -1,0 +1,51 @@
+
+
+# SIGNUP
+POST http://localhost:3000/api/auth/signup
+Content-Type: application/json
+
+{
+    "firstName": "Temitope",
+    "lastName": "Daramola",
+    "email": "sevaca5636@keevle.com",
+    "password": "12345678"
+}
+
+
+###############################################
+#### LOGIN
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+    "email": "sevaca5636@keevle.com",
+    "password": "12345678"
+}
+
+
+###################################
+# VERIFY
+POST http://localhost:3000/api/auth/verify
+Content-Type: application/json
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImVtYWlsIjoic2V2YWNhNTYzNkBrZWV2bGUuY29tIn0sIm5hbWUiOiJhdXRoIiwiaWF0IjoxNzYxNjUzNDQ2LCJleHAiOjE3NjE2NTM3NDZ9.PELSd9JDOAtO1ZI517yGko0d1LlHdWU8u-kIFJEeTT8"
+}
+
+###################################
+# RESEND VERIFY
+GET http://localhost:3000/api/auth/verify/m9ikerl@onmailflare.com
+Content-Type: application/json
+
+
+#########################################
+# INIT ACCOUNT
+GET http://localhost:3000/auth/user/init-account/johndoe@givmail.com
+Content-Type: application/json
+
+#########################################
+# INIT ACCESS TOKEN
+GET http://localhost:3000/auth/user/refresh-access-token/johndoe@givmail.com
+Content-Type: application/json
+
+

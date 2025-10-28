@@ -1,0 +1,17 @@
+/// / SCHOOL SCHEMA PRISMA FILE
+model School {
+  id           String   @id @default(uuid())
+  userId       String   @unique
+  name         String
+  photo        String?
+  email        String   @unique
+  state        String
+  country      String
+  address      String   @db.Text
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @default(now()) @updatedAt
+  phoneNumber1 String
+  phoneNumber2 String?
+  // Back relations
+  users        User[]
+}
