@@ -1,7 +1,8 @@
 
 
 # SIGNUP
-POST http://localhost:3000/api/auth/signup
+#####
+POST https://synergy-sms-backend.netlify.app/api/auth/signup
 Content-Type: application/json
 
 {
