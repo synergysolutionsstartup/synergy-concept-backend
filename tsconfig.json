@@ -6,14 +6,15 @@
 
     /* Module System */
     "module": "commonjs",
-      "target": "es2020",
+    "target": "es2020",
 
     /* Node.js Types */
     "types": ["node"],
+    "typeRoots": ["./node_modules/@types"], // ✅ REQUIRED FIX
 
     /* Output Options */
     "sourceMap": true,
-    "declaration": false,       // no need for .d.ts since this is an app
+    "declaration": false, // no need for .d.ts since this is an app
     "declarationMap": false,
 
     /* Strictness */
