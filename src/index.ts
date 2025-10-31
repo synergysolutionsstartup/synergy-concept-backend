@@ -9,6 +9,7 @@ import { db } from "@src/database/_index/index";
 // INTERNAL IMPORTS
 import authRoutes from "@src/modules/auth/routes/_index";
 import schoolInfoRoutes from "@src/modules/school-info/routes/_index";
+import indexRoute from "@src/modules/_root/routes/_index";
 
 import { middlewares } from "@src/middleware/_index";
 
@@ -31,6 +32,7 @@ app.use(express.json());
 app.use(morgan("dev"));
 
 // ASSIGN ROUTES MIDDLWARES
+app.use("/", indexRoute);
 app.use("/api/auth", authRoutes);
 app.use("/api/school-info", schoolInfoRoutes);
 
