@@ -1,3 +1,6 @@
+// SCHEMA.PRISMA FILE
+// THE ACTUAL SCHEMAS ARE DEFINED IN THEIR RESPCTIVE FILES IN THE SCHEMA FOLDER.
+
 generator client {
   provider = "prisma-client-js"
   output   = "../client"
