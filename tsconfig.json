@@ -28,9 +28,9 @@
     "isolatedModules": true,
 
     /* Path Aliases */
-    "baseUrl": "./",
+    "baseUrl": "./src",
     "paths": {
-      "@src/*": ["src/*"]
+      "@src/*": ["*"]
     }
   },
   "include": ["src"],
