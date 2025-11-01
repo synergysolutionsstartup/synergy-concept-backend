@@ -194,6 +194,18 @@ exports.Prisma.SchoolScalarFieldEnum = {
   phoneNumber2: 'phoneNumber2'
 };
 
+exports.Prisma.SessionScalarFieldEnum = {
+  id: 'id',
+  schoolId: 'schoolId',
+  year: 'year',
+  term: 'term',
+  isActive: 'isActive',
+  startDate: 'startDate',
+  endDate: 'endDate',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -275,11 +287,23 @@ exports.Prisma.SchoolOrderByRelevanceFieldEnum = {
   phoneNumber1: 'phoneNumber1',
   phoneNumber2: 'phoneNumber2'
 };
+
+exports.Prisma.SessionOrderByRelevanceFieldEnum = {
+  id: 'id',
+  schoolId: 'schoolId',
+  year: 'year'
+};
 exports.UserRole = exports.$Enums.UserRole = {
   student: 'student',
   staff: 'staff',
   parent: 'parent',
   super_admin: 'super_admin'
+};
+
+exports.Term = exports.$Enums.Term = {
+  FIRST_TERM: 'FIRST_TERM',
+  SECOND_TERM: 'SECOND_TERM',
+  THIRD_TERM: 'THIRD_TERM'
 };
 
 exports.Prisma.ModelName = {
@@ -288,7 +312,8 @@ exports.Prisma.ModelName = {
   StaffProfile: 'StaffProfile',
   ParentProfile: 'ParentProfile',
   SuperAdminProfile: 'SuperAdminProfile',
-  School: 'School'
+  School: 'School',
+  Session: 'Session'
 };
 
 /**

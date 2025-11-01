@@ -9,6 +9,7 @@ import { db } from "@src/database/_index/index";
 // INTERNAL IMPORTS
 import authRoutes from "@src/modules/auth/routes/_index";
 import schoolInfoRoutes from "@src/modules/school-info/routes/_index";
+import sessionRoutes from "@src/modules/session/routes/_index";
 import indexRoute from "@src/modules/_root/routes/_index";
 
 import { middlewares } from "@src/middleware/_index";
@@ -35,6 +36,8 @@ app.use(morgan("dev"));
 app.use("/", indexRoute);
 app.use("/api/auth", authRoutes);
 app.use("/api/school-info", schoolInfoRoutes);
+app.use("/api/session", sessionRoutes);
+
 
 // ASSIGN FAILSAFE MIDDLWEARES
 app.use(middlewares.handleInvalidRoute); // Invalid Routes (404 Handler)

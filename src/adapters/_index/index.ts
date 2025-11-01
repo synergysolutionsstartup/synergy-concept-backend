@@ -3,10 +3,13 @@ import { tokens } from "@src/adapters/token/_index";
 import { validator } from "@src/adapters/validator/_index";
 
 import * as hash from "@src/adapters/hash/password";
+import { date } from "@src/adapters/date/_index";
 
 export const adapters = {
   tokens,
   validator,
   emailService,
   hash,
+  date
 };
+

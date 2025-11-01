@@ -1,0 +1,21 @@
+model Session {
+  id        String   @id @default(uuid())
+  schoolId  String
+  year      String
+  term      Term
+  isActive  Boolean  @default(false)
+  startDate DateTime
+  endDate   DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+  school    School   @relation(fields: [schoolId], references: [id])
+
+  // @@index([schoolId, isActive]) // optional for faster query
+  @@unique([schoolId, term, year])
+}
+
+enum Term {
+  FIRST_TERM
+  SECOND_TERM
+  THIRD_TERM
+}

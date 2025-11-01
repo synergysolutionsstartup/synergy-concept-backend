@@ -9,7 +9,7 @@ import {
   shutdownDB,
   parseDbError
 } from "@src/database/prisma/connection";
- import { AppDao , AppDaoFactory, AppDaoShape} from "@src/database/prisma/dao/_index";
+ import { AppDao , AppDaoFactory} from "@src/database/prisma/dao/_index";
 
 
 type PrismaType  = typeof Prisma

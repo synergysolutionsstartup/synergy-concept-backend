@@ -6,6 +6,7 @@ export interface AccountEntity {
   email: string;
   password: string;
   role: UserRole;
+  schoolId: string;
   verified: boolean;
   refreshToken?: string | null;
   verificationToken?: string | null;

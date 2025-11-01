@@ -42,7 +42,7 @@ export function AuthDao(prismaClient: DbClient) {
         // Run all steps in a single transaction
         const result = await prismaClient.$transaction(
           async (tx) => {
-            const defaultSchoolId = `N/A_${Date.now()}`;
+            const defaultUserId = `N/A_${Date.now()}`;
 
             // Step 1: Create default school
             const defaultSchool = await tx.school.create({
@@ -53,7 +53,7 @@ export function AuthDao(prismaClient: DbClient) {
                 country: "N/A",
                 state: "N/A",
                 phoneNumber1: "N/A",
-                userId: defaultSchoolId, // link admin as school owner
+                userId: defaultUserId, // link admin as school owner
               },
             });
 
@@ -71,7 +71,7 @@ export function AuthDao(prismaClient: DbClient) {
             // Step 3: update the userId of the school with the id of the newly created user
             // so you can retrive it later on
             const updatedSchool = await tx.school.update({
-              where: { userId: defaultSchoolId },
+              where: { userId: defaultUserId },
               data: { userId: createdAccount.id },
             });
             const returnData = {

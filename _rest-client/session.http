@@ -1,0 +1,49 @@
+
+
+# CREATE
+###############################################
+POST http://localhost:3000/api/session
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiMTZiNTEyMDItZmI2Yy00MDE4LWFhZGQtNDY0MTVjN2RjOTZmIiwiZW1haWwiOiJzZXZhY2E1NjM2QGtlZXZsZS5jb20iLCJyb2xlIjoic3VwZXJfYWRtaW4iLCJzY2hvb2xJZCI6IjU0MDU1ZTQxLWFhMjAtNDc2MS05NTcwLWFiODgzNjRhMmRjOCIsInZlcmlmaWVkIjp0cnVlLCJjcmVhdGVkQXQiOiIyMDI1LTEwLTI4VDEyOjEwOjQ3LjgzMloiLCJ1cGRhdGVkQXQiOiIyMDI1LTEwLTI4VDEyOjEyOjQwLjQ2OFoiLCJzdHVkZW50UHJvZmlsZSI6bnVsbCwic3RhZmZQcm9maWxlIjpudWxsLCJwYXJlbnRQcm9maWxlIjpudWxsLCJzdXBlckFkbWluUHJvZmlsZSI6eyJpZCI6ImVhMzIzM2ZkLTdmN2EtNGE5OS1hMjNhLWE3MjNkZjlhZDc1OCIsInVzZXJJZCI6IjE2YjUxMjAyLWZiNmMtNDAxOC1hYWRkLTQ2NDE1YzdkYzk2ZiIsImZpcnN0TmFtZSI6IlRlbWl0b3BlIiwibGFzdE5hbWUiOiJEYXJhbW9sYSIsImdlbmRlciI6bnVsbCwiY3JlYXRlZEF0IjoiMjAyNS0xMC0yOFQxMjoxMDo0Ny44MzJaIiwidXBkYXRlZEF0IjoiMjAyNS0xMC0yOFQxMjoxMDo0Ny44MzJaIn19LCJuYW1lIjoiYWNjZXNzIiwiaWF0IjoxNzYxOTk1OTczLCJleHAiOjE3NjI2MDA3NzN9.m0_Namb1zH1CWQV3ggaEcqAPtcVm0cikDIda0ASuK6E
+
+{
+    "year": "2024/2025",
+    "term": "FIRST_TERM",
+    "isActive": false,
+    "startDate": "2025-09-08",
+    "endDate": "2026-01-10"
+}
+
+
+# UPDATE#
+###############################################
+PUT http://localhost:3000/api/session
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiMTZiNTEyMDItZmI2Yy00MDE4LWFhZGQtNDY0MTVjN2RjOTZmIiwiZW1haWwiOiJzZXZhY2E1NjM2QGtlZXZsZS5jb20iLCJyb2xlIjoic3VwZXJfYWRtaW4iLCJzY2hvb2xJZCI6IjU0MDU1ZTQxLWFhMjAtNDc2MS05NTcwLWFiODgzNjRhMmRjOCIsInZlcmlmaWVkIjp0cnVlLCJjcmVhdGVkQXQiOiIyMDI1LTEwLTI4VDEyOjEwOjQ3LjgzMloiLCJ1cGRhdGVkQXQiOiIyMDI1LTEwLTI4VDEyOjEyOjQwLjQ2OFoiLCJzdHVkZW50UHJvZmlsZSI6bnVsbCwic3RhZmZQcm9maWxlIjpudWxsLCJwYXJlbnRQcm9maWxlIjpudWxsLCJzdXBlckFkbWluUHJvZmlsZSI6eyJpZCI6ImVhMzIzM2ZkLTdmN2EtNGE5OS1hMjNhLWE3MjNkZjlhZDc1OCIsInVzZXJJZCI6IjE2YjUxMjAyLWZiNmMtNDAxOC1hYWRkLTQ2NDE1YzdkYzk2ZiIsImZpcnN0TmFtZSI6IlRlbWl0b3BlIiwibGFzdE5hbWUiOiJEYXJhbW9sYSIsImdlbmRlciI6bnVsbCwiY3JlYXRlZEF0IjoiMjAyNS0xMC0yOFQxMjoxMDo0Ny44MzJaIiwidXBkYXRlZEF0IjoiMjAyNS0xMC0yOFQxMjoxMDo0Ny44MzJaIn19LCJuYW1lIjoiYWNjZXNzIiwiaWF0IjoxNzYxOTk1OTczLCJleHAiOjE3NjI2MDA3NzN9.m0_Namb1zH1CWQV3ggaEcqAPtcVm0cikDIda0ASuK6E
+
+{
+    "id": "18184d9a-30b8-46e6-9537-06e765218b6b",
+    "term": "THIRD_TERM",
+    "isActive": true,
+     "startDate": "2025-09-02"
+}
+
+###################################
+#### DELETE http://localhost:3000/api/session/:id
+###############################################
+DELETE http://localhost:3000/api/session/18184d9a-30b8-46e6-9537-06e765218b6b
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiNTE3N2I2ZmUtNjZkNy00NDMxLWE2OWItN2E1YTdmOWJhYzBiIiwiZW1haWwiOiJtOWlrZXJsQG9ubWFpbGZsYXJlLmNvbSIsInJvbGUiOiJzdXBlcl9hZG1pbiIsInZlcmlmaWVkIjp0cnVlLCJjcmVhdGVkQXQiOiIyMDI1LTEwLTE1VDA5OjUxOjU4LjI2NFoiLCJ1cGRhdGVkQXQiOiIyMDI1LTEwLTE1VDExOjE1OjIxLjM4NVoiLCJzdHVkZW50UHJvZmlsZSI6bnVsbCwic3RhZmZQcm9maWxlIjpudWxsLCJwYXJlbnRQcm9maWxlIjpudWxsLCJzdXBlckFkbWluUHJvZmlsZSI6eyJpZCI6IjEyNzZiOTU5LTJmZGMtNDY4ZC04MTJhLTUzYjlhODczNmIxNiIsInVzZXJJZCI6IjUxNzdiNmZlLTY2ZDctNDQzMS1hNjliLTdhNWE3ZjliYWMwYiIsImZpcnN0TmFtZSI6IlRlbWl0b3BlIiwibGFzdE5hbWUiOiJEYXJhbW9sYSIsIm9mZmljZSI6bnVsbCwiY3JlYXRlZEF0IjoiMjAyNS0xMC0xNVQwOTo1MTo1OC4yNjRaIiwidXBkYXRlZEF0IjoiMjAyNS0xMC0xNVQwOTo1MTo1OC4yNjRaIn19LCJuYW1lIjoiYWNjZXNzIiwiaWF0IjoxNzYwNTI3MDQyLCJleHAiOjE3NjExMzE4NDJ9.t919eWce-n4767ESKB4jRL_w_JqoGxDLxXYxsO8Kg7o
+
+###################################
+#### GET http://localhost:3000/api/session/all/:schoolId
+###############################################
+GET http://localhost:3000/api/session/all/54055e41-aa20-4761-9570-ab88364a2dc8
+Content-Type: application/json
+
+###################################
+#### GET http://localhost:3000/api/session/all/:id
+###############################################
+GET http://localhost:3000/api/session/info/18184d9a-30b8-46e6-9537-06e765218b6b
+Content-Type: application/json
+
