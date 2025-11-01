@@ -1,6 +1,6 @@
 
 // CONNECTIONS.TS File (Prisma)
-// THis file contains the implementation to connet to the database using prisma
+// THis file contains the implementation to connet to the database using prisma as well as other prisma config implementations
 // NOTE: DO NOT CALL THE METHOD HERE
 // JUST DEFINE THE FUNCTION AND EXPORT IT OUT TO THE REPOSITORY
 
@@ -22,4 +22,16 @@ export async function connectDB() {
 export async function shutdownDB() {
   await dbClient.$disconnect();
   console.log("🔌 Prisma disconnected");
+}
+
+
+export function parseDbError(error: any) {
+  switch (error?.code) {
+    case "P2002":
+      return { message: "Unique constraint failed", statusCode: 409 };
+    case "P2025":
+      return { message: "Record not found", statusCode: 404 };
+    default:
+      return { message: "Database error", statusCode: 500 };
+  }
 }

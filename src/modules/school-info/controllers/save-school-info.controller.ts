@@ -6,9 +6,6 @@ import {
 } from "@src/_types/school-info/records.type";
 import { common } from "@src/common/_index";
 
-// MODULE IMPORTS
-import { authConstants } from "@src/modules/auth/constants";
-
 // INITILIZE COMMON PROPS
 const AppError = common.errors.AppError;
 const DatabaseError = common.errors.DatabaseError;
@@ -28,33 +25,28 @@ interface Props {
 export const saveSchoolInfoController = async (props: Props) => {
   // NOTE: DTO Validations should have been done by the middlewares
 
-  // console.log("reached the save controller")
-
   try {
     const { dao, body, route, requestId, appDao } = props;
     let result = null;
 
-    // console.log("props-controller ", props)
+    const constants = common.constants;
 
     // check if the requqestId belongs to to a super admin account
     // if not then throw error Not Authorized
     const user = await appDao.account.findAccountById(requestId);
-    if (!user) throw new AppError("Not Authrized. Invalid credentials", 401);
-    // console.log("userCheckResult ", user);
+    if (!user || user.role !== constants.userRole.superAdmin) {
+      throw new AppError("Not Authrized. Invalid credentials", 401);
+    }
 
     if (route === "create") {
-      // console.log("calling the create dao")
-
       const recordPayload: UpdateSchoolInfoRecord | NewSchoolInfoRecord = {
         ...(body as CreateSchoolInfoDto),
         userId: requestId,
       };
       result = await dao.createSchoolInfo(requestId, recordPayload);
     } else if (route === "update") {
-      // console.log("calling the update dao ")
- 
       const recordPayload: UpdateSchoolInfoRecord = {
-          ...(body as UpdateSchoolInfoRecord),
+        ...(body as UpdateSchoolInfoRecord),
         userId: requestId,
       };
 

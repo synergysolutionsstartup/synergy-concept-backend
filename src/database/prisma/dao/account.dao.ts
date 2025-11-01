@@ -8,18 +8,7 @@ type AccountEntity = Account.Entities.AccountEntity
 const { DatabaseError } = Errors;
 type DbClient = typeof db.dbClient
 
-function parseDbError(error: any) {
-  switch (error?.code) {
-    case "P2002":
-      return { message: "Unique constraint failed", statusCode: 409 };
-    case "P2025":
-      return { message: "Record not found", statusCode: 404 };
-    default:
-      return { message: "Database error", statusCode: 500 };
-  }
-}
-
-export function AccountDao(prismaClient: DbClient) {
+export function AccountDao(prismaClient: DbClient, parseDbError: any) {
 
   return {
 
@@ -56,7 +45,6 @@ export function AccountDao(prismaClient: DbClient) {
             superAdminProfile: true,
           },
         });
-
 
         // console.log("findAccountByEmail result ", result)
         return result as unknown as AccountEntity

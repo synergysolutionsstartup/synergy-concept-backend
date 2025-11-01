@@ -22,7 +22,6 @@ const controllerInstance = AuthController();
 
 const validator = common.utils.validator
 
-
 // Predefine the validator middleware
 // destructure dto schemas
 const { signup, login, verify, resendVerify } = authValidator;

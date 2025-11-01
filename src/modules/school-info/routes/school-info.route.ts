@@ -14,14 +14,14 @@ import { SchoolInfoController } from "@src/modules/school-info/controllers/_inde
 // Initilize PROPS AND Dependencies
 const router = express.Router();
 const daoInstance = SchoolInfoDao(db.dbClient);
-const appDao = common.AppDao(db.dbClient);
 
+const appDao = db.AppDao(db.dbClient, db.parseDbError);
 const controllerInstance = SchoolInfoController();
 
 const validator = common.utils.validator;
-const {handleSessionAuth, validateDto} = middlewares
+const { handleSessionAuth, validateDto } = middlewares;
 
-const constants = common.constants
+const constants = common.constants;
 
 // Predefine the validator middleware
 // destructure dto schemas
@@ -46,9 +46,12 @@ const readSchoolInfoMiddleware = validateDto(
 const permission = {
   create: [constants.userRole.superAdmin],
   update: [constants.userRole.superAdmin],
-}
+};
 
-const createSession = handleSessionAuth(constants.jwtKeys.access, permission.create);
+const createSession = handleSessionAuth(
+  constants.jwtKeys.access,
+  permission.create
+);
 const createGuard = [createSession, createSchoolMiddleware];
 router.post(
   "/",
@@ -64,7 +67,7 @@ router.post(
         requestId: user.id,
         appDao: appDao,
       };
-        console.log("props ", props)
+      console.log("props ", props);
       const response = await controllerInstance.save(props);
       res.status(201).json(response);
     } catch (error) {
@@ -73,9 +76,10 @@ router.post(
   }
 );
 
-
-
-const updateSession = handleSessionAuth(constants.jwtKeys.access, permission.update);
+const updateSession = handleSessionAuth(
+  constants.jwtKeys.access,
+  permission.update
+);
 const updateGuard = [updateSession, updateSchoolMiddleware];
 router.put(
   "/",
@@ -83,7 +87,7 @@ router.put(
   async (req: Request, res: Response, next: NextFunction) => {
     try {
       const { user }: Record<string, any> = req as unknown as any;
-      
+
       const props = {
         body: req.body,
         dao: daoInstance,
@@ -115,4 +119,4 @@ router.get(
   }
 );
 
-export default router
+export default router;
