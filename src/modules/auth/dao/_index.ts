@@ -13,18 +13,9 @@ const { DatabaseError } = Errors;
 
 type DbClient = typeof db.dbClient;
 
-function parseDbError(error: any) {
-  switch (error?.code) {
-    case "P2002":
-      return { message: "Unique constraint failed", statusCode: 409 };
-    case "P2025":
-      return { message: "Record not found", statusCode: 404 };
-    default:
-      return { message: "Database error", statusCode: 500 };
-  }
-}
 
-export function AuthDao(prismaClient: DbClient) {
+
+export function AuthDao(prismaClient: DbClient, parseDbError: any) {
   const Prisma = db.Prisma;
 
   return {

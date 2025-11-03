@@ -16,7 +16,7 @@ import { authValidator } from "@src/modules/auth/validator/_index";
 
 // Initilize PROPS AND Dependencies
 const router = express.Router();
-const daoInstance = AuthDao(db.dbClient);
+const daoInstance = AuthDao(db.dbClient, db.parseDbError);
 
 const controllerInstance = AuthController();
 

@@ -79,10 +79,10 @@ export const signupController = async (props: Props) => {
     };
 
     const account = await dao.createAccount(userRecord);
-    console.log("created user", account);
+    // console.log("created user", account);
 
     const accountResponseDto = AuthMapper.mapAccountEntityToResponseDto(account);
-    console.log("mapping result ", accountResponseDto);
+    // console.log("mapping result ", accountResponseDto);
 
 
     // SEND THE VERIFICATION EMAIL
@@ -108,7 +108,7 @@ export const signupController = async (props: Props) => {
     const response = {
       status: "success",
       message: authMessage.signupSuccess, // Replace with your actual message string
-      data: accountResponseDto,
+      data: {account: accountResponseDto},
     };
 
     return response;

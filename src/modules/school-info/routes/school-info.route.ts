@@ -13,7 +13,7 @@ import { SchoolInfoController } from "@src/modules/school-info/controllers/_inde
 
 // Initilize PROPS AND Dependencies
 const router = express.Router();
-const daoInstance = SchoolInfoDao(db.dbClient);
+const daoInstance = SchoolInfoDao(db.dbClient, db.parseDbError);
 
 const appDao = db.AppDao(db.dbClient, db.parseDbError);
 const controllerInstance = SchoolInfoController();
