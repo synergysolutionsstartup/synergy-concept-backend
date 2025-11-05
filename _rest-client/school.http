@@ -1,7 +1,8 @@
 
 
 # CREATE
-POST http://localhost:3000/api/school-info
+# POST http://localhost:3000/api/school-info
+POST https://synergy-concept-backend.onrender.com/api/school-info
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiMTZiNTEyMDItZmI2Yy00MDE4LWFhZGQtNDY0MTVjN2RjOTZmIiwiZW1haWwiOiJzZXZhY2E1NjM2QGtlZXZsZS5jb20iLCJyb2xlIjoic3VwZXJfYWRtaW4iLCJzY2hvb2xJZCI6IjU0MDU1ZTQxLWFhMjAtNDc2MS05NTcwLWFiODgzNjRhMmRjOCIsInZlcmlmaWVkIjp0cnVlLCJjcmVhdGVkQXQiOiIyMDI1LTEwLTI4VDEyOjEwOjQ3LjgzMloiLCJ1cGRhdGVkQXQiOiIyMDI1LTEwLTI4VDEyOjEwOjQ3LjgzMloiLCJzdHVkZW50UHJvZmlsZSI6bnVsbCwic3RhZmZQcm9maWxlIjpudWxsLCJwYXJlbnRQcm9maWxlIjpudWxsLCJzdXBlckFkbWluUHJvZmlsZSI6eyJpZCI6ImVhMzIzM2ZkLTdmN2EtNGE5OS1hMjNhLWE3MjNkZjlhZDc1OCIsInVzZXJJZCI6IjE2YjUxMjAyLWZiNmMtNDAxOC1hYWRkLTQ2NDE1YzdkYzk2ZiIsImZpcnN0TmFtZSI6IlRlbWl0b3BlIiwibGFzdE5hbWUiOiJEYXJhbW9sYSIsImdlbmRlciI6bnVsbCwiY3JlYXRlZEF0IjoiMjAyNS0xMC0yOFQxMjoxMDo0Ny44MzJaIiwidXBkYXRlZEF0IjoiMjAyNS0xMC0yOFQxMjoxMDo0Ny44MzJaIn19LCJuYW1lIjoiYWNjZXNzIiwiaWF0IjoxNzYxNjUzNTYwLCJleHAiOjE3NjIyNTgzNjB9.MF_hjwFQCv-CWd8FZtylHDRAk9QHENd9RTQk8Y_9-lU
 
@@ -18,22 +19,19 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiM
 # UPDATE#
 ###############################################
 PUT http://localhost:3000/api/school-info
+# PUT https://synergy-concept-backend.onrender.com/api/school-info
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiZjc1Y2RmYWUtNDBkNS00MDVjLWIwNjEtYjdlMzhmMGE1NmQxIiwiZW1haWwiOiJzZXZhY2E1NjM2QGtlZXZsZS5jb20iLCJyb2xlIjoic3VwZXJfYWRtaW4iLCJzY2hvb2xJZCI6ImM4OTkxMDlhLTY5OTYtNDk5OS05YmE2LWFkNTNkMGMwMzMxZCIsInZlcmlmaWVkIjp0cnVlLCJjcmVhdGVkQXQiOiIyMDI1LTEwLTI4VDEwOjUzOjAzLjUwMFoiLCJ1cGRhdGVkQXQiOiIyMDI1LTEwLTI4VDEwOjU2OjAyLjExMloiLCJzdHVkZW50UHJvZmlsZSI6bnVsbCwic3RhZmZQcm9maWxlIjpudWxsLCJwYXJlbnRQcm9maWxlIjpudWxsLCJzdXBlckFkbWluUHJvZmlsZSI6eyJpZCI6IjdkNmY4ZGZlLTNkZTMtNGMzNC04ODgxLWNmMDMxMGMyNTYyOSIsInVzZXJJZCI6ImY3NWNkZmFlLTQwZDUtNDA1Yy1iMDYxLWI3ZTM4ZjBhNTZkMSIsImZpcnN0TmFtZSI6IlRlbWl0b3BlIiwibGFzdE5hbWUiOiJEYXJhbW9sYSIsImdlbmRlciI6bnVsbCwiY3JlYXRlZEF0IjoiMjAyNS0xMC0yOFQxMDo1MzowMy41MDBaIiwidXBkYXRlZEF0IjoiMjAyNS0xMC0yOFQxMDo1MzowMy41MDBaIn19LCJuYW1lIjoiYWNjZXNzIiwiaWF0IjoxNzYxNjUyMTYwLCJleHAiOjE3NjIyNTY5NjB9.gGv3fWJGfX3o0LLX9DM2TRJXY0VXyOJ7xzvzwamzn08
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiMTZiNTEyMDItZmI2Yy00MDE4LWFhZGQtNDY0MTVjN2RjOTZmIiwiZW1haWwiOiJzZXZhY2E1NjM2QGtlZXZsZS5jb20iLCJyb2xlIjoic3VwZXJfYWRtaW4iLCJzY2hvb2xJZCI6IjU0MDU1ZTQxLWFhMjAtNDc2MS05NTcwLWFiODgzNjRhMmRjOCIsInZlcmlmaWVkIjp0cnVlLCJjcmVhdGVkQXQiOiIyMDI1LTEwLTI4VDEyOjEwOjQ3LjgzMloiLCJ1cGRhdGVkQXQiOiIyMDI1LTExLTAxVDExOjE5OjMzLjEzM1oiLCJzdHVkZW50UHJvZmlsZSI6bnVsbCwic3RhZmZQcm9maWxlIjpudWxsLCJwYXJlbnRQcm9maWxlIjpudWxsLCJzdXBlckFkbWluUHJvZmlsZSI6eyJpZCI6ImVhMzIzM2ZkLTdmN2EtNGE5OS1hMjNhLWE3MjNkZjlhZDc1OCIsInVzZXJJZCI6IjE2YjUxMjAyLWZiNmMtNDAxOC1hYWRkLTQ2NDE1YzdkYzk2ZiIsImZpcnN0TmFtZSI6IlRlbWl0b3BlIiwibGFzdE5hbWUiOiJEYXJhbW9sYSIsImdlbmRlciI6bnVsbCwiY3JlYXRlZEF0IjoiMjAyNS0xMC0yOFQxMjoxMDo0Ny44MzJaIiwidXBkYXRlZEF0IjoiMjAyNS0xMC0yOFQxMjoxMDo0Ny44MzJaIn19LCJuYW1lIjoiYWNjZXNzIiwiaWF0IjoxNzYyMzMyMDM3LCJleHAiOjE3NjI5MzY4Mzd9.pGNbeHUO8uBa69ov5gmcGR-7HxgNqwR0Y-CuD-dmCPI
 
 {
-    "id": "c899109a-6996-4999-9ba6-ad53d0c0331d",
-    "name": "Bright International School",
-    "email": "brightintrnational@gmail.com",
-    "phoneNumber1": "09029886869",
-    "country": "Nigeria",
-    "state": "Oyo",
-    "address": "University Of Ibadan, Ibadan"
+    "id": "54055e41-aa20-4761-9570-ab88364a2dc8",
+    "name": "Bright International School Nigeria",
+    "date": "N/A"
 }
 
 
 ###################################
 #### GET http://localhost:3000/api/school-info?id=0a236092-e56b-4692-a00b-5b5a39b8e253
-GET http://localhost:3000/api/school-info?userId=5177b6fe-66d7-4431-a69b-7a5a7f9bac0b
+GET https://synergy-concept-backend.onrender.com/api/school-info?id=54055e41-aa20-4761-9570-ab88364a2dc8
 Content-Type: application/json
 

@@ -1,7 +1,7 @@
 
 # liveBaseRoute: synergy-concept-backend.onrender.com
 
-
+# eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiMTZiNTEyMDItZmI2Yy00MDE4LWFhZGQtNDY0MTVjN2RjOTZmIiwiZW1haWwiOiJzZXZhY2E1NjM2QGtlZXZsZS5jb20iLCJyb2xlIjoic3VwZXJfYWRtaW4iLCJzY2hvb2xJZCI6IjU0MDU1ZTQxLWFhMjAtNDc2MS05NTcwLWFiODgzNjRhMmRjOCIsInZlcmlmaWVkIjp0cnVlLCJjcmVhdGVkQXQiOiIyMDI1LTEwLTI4VDEyOjEwOjQ3LjgzMloiLCJ1cGRhdGVkQXQiOiIyMDI1LTExLTAxVDExOjE5OjMzLjEzM1oiLCJzdHVkZW50UHJvZmlsZSI6bnVsbCwic3RhZmZQcm9maWxlIjpudWxsLCJwYXJlbnRQcm9maWxlIjpudWxsLCJzdXBlckFkbWluUHJvZmlsZSI6eyJpZCI6ImVhMzIzM2ZkLTdmN2EtNGE5OS1hMjNhLWE3MjNkZjlhZDc1OCIsInVzZXJJZCI6IjE2YjUxMjAyLWZiNmMtNDAxOC1hYWRkLTQ2NDE1YzdkYzk2ZiIsImZpcnN0TmFtZSI6IlRlbWl0b3BlIiwibGFzdE5hbWUiOiJEYXJhbW9sYSIsImdlbmRlciI6bnVsbCwiY3JlYXRlZEF0IjoiMjAyNS0xMC0yOFQxMjoxMDo0Ny44MzJaIiwidXBkYXRlZEF0IjoiMjAyNS0xMC0yOFQxMjoxMDo0Ny44MzJaIn19LCJuYW1lIjoiYWNjZXNzIiwiaWF0IjoxNzYyMzMyMDM3LCJleHAiOjE3NjI5MzY4Mzd9.pGNbeHUO8uBa69ov5gmcGR-7HxgNqwR0Y-CuD-dmCPI
 
 # SIGNUP
 #####
@@ -20,7 +20,8 @@ Content-Type: application/json
 ###############################################
 # ### https://synergy-concept-backend.onrender.com/
 #### LOGIN
-POST http://localhost:3000/api/auth/login
+# POST http://localhost:3000/api/auth/login
+POST https://synergy-concept-backend.onrender.com/api/auth/login
 Content-Type: application/json
 
 {

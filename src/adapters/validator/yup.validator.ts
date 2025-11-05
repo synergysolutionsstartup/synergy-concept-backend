@@ -36,8 +36,8 @@ export const validatePayload = async (schema: any, data: any) => {
     if (unknownKeys.length > 0) {
       const data = { unknown: message };
 
-      const appError = new AppError(message, 400, data);
-      throw appError;
+      // const appError = new AppError(message, 400, data);
+      throw data;
     }
   } catch (error) {
     // console.log("yup error ", error);
