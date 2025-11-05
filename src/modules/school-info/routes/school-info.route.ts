@@ -68,7 +68,7 @@ router.post(
         requestId: user.id,
         appDao: appDao,
       };
-      console.log("props ", props);
+
       const response = await controllerInstance.save(props);
       res.status(201).json(response);
     } catch (error) {

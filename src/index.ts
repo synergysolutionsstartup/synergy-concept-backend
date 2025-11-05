@@ -10,6 +10,7 @@ import { db } from "@src/database/_index/index";
 import authRoutes from "@src/modules/auth/routes/_index";
 import schoolInfoRoutes from "@src/modules/school-info/routes/_index";
 import sessionRoutes from "@src/modules/session/routes/_index";
+import classRoutes from "@src/modules/class/routes/_index";
 import indexRoute from "@src/modules/_root/routes/_index";
 
 import { middlewares } from "@src/middleware/_index";
@@ -37,7 +38,7 @@ app.use("/", indexRoute);
 app.use("/api/auth", authRoutes);
 app.use("/api/school-info", schoolInfoRoutes);
 app.use("/api/session", sessionRoutes);
-
+app.use("/api/class", classRoutes);
 
 // ASSIGN FAILSAFE MIDDLWEARES
 app.use(middlewares.handleInvalidRoute); // Invalid Routes (404 Handler)

@@ -1,0 +1,35 @@
+// CLASS PRISMA FILE
+enum Name {
+  JSS_ONE
+  JSS_TWO
+  JSS_THREE
+  SSS_ONE
+  SSS_TWO
+  SSS_THREE
+}
+
+model Class {
+  id        String   @id @default(uuid())
+  schoolId  String
+  name      Name    
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+
+  // Virtual relation to school, prevent deleting the school if classes exist
+  school   School     @relation(fields: [schoolId], references: [id], onDelete: Restrict)
+  sections ClassSection[]
+
+  @@unique([schoolId, name])
+}
+
+model ClassSection {
+  id        String   @id @default(uuid())
+  classId   String
+  section   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+
+  class Class @relation(fields: [classId], references: [id], onDelete: Cascade)
+
+  @@unique([classId, section])
+}

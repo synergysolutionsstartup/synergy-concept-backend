@@ -15,4 +15,5 @@ model School {
   // Back relations
   users        User[]
   sessions     Session[]
+  classes  Class[]
 }

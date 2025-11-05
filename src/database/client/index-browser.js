@@ -179,6 +179,22 @@ exports.Prisma.SuperAdminProfileScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.ClassScalarFieldEnum = {
+  id: 'id',
+  schoolId: 'schoolId',
+  name: 'name',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ClassSectionScalarFieldEnum = {
+  id: 'id',
+  classId: 'classId',
+  section: 'section',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SchoolScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
@@ -275,6 +291,17 @@ exports.Prisma.SuperAdminProfileOrderByRelevanceFieldEnum = {
   gender: 'gender'
 };
 
+exports.Prisma.ClassOrderByRelevanceFieldEnum = {
+  id: 'id',
+  schoolId: 'schoolId'
+};
+
+exports.Prisma.ClassSectionOrderByRelevanceFieldEnum = {
+  id: 'id',
+  classId: 'classId',
+  section: 'section'
+};
+
 exports.Prisma.SchoolOrderByRelevanceFieldEnum = {
   id: 'id',
   userId: 'userId',
@@ -300,6 +327,15 @@ exports.UserRole = exports.$Enums.UserRole = {
   super_admin: 'super_admin'
 };
 
+exports.Name = exports.$Enums.Name = {
+  JSS_ONE: 'JSS_ONE',
+  JSS_TWO: 'JSS_TWO',
+  JSS_THREE: 'JSS_THREE',
+  SSS_ONE: 'SSS_ONE',
+  SSS_TWO: 'SSS_TWO',
+  SSS_THREE: 'SSS_THREE'
+};
+
 exports.Term = exports.$Enums.Term = {
   FIRST_TERM: 'FIRST_TERM',
   SECOND_TERM: 'SECOND_TERM',
@@ -312,6 +348,8 @@ exports.Prisma.ModelName = {
   StaffProfile: 'StaffProfile',
   ParentProfile: 'ParentProfile',
   SuperAdminProfile: 'SuperAdminProfile',
+  Class: 'Class',
+  ClassSection: 'ClassSection',
   School: 'School',
   Session: 'Session'
 };
