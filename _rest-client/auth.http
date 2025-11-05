@@ -6,13 +6,14 @@
 # SIGNUP
 #####
 ##################################
-POST https://synergy-concept-backend.onrender.com/api/auth/signup
+# POST https://synergy-concept-backend.onrender.com/api/auth/signup
+POST http://localhost:3000/api/auth/signup
 Content-Type: application/json
 
 {
     "firstName": "Temitope",
     "lastName": "Daramola",
-    "email": "sevaca5636@keevle.com",
+    "email": "jdf1zxm2fb@wnbaldwy.com",
     "password": "12345678"
 }
 

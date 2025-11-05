@@ -1,0 +1,47 @@
+
+
+# CREATE
+###############################################
+POST http://localhost:3000/api/class
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiNTE3N2I2ZmUtNjZkNy00NDMxLWE2OWItN2E1YTdmOWJhYzBiIiwiZW1haWwiOiJtOWlrZXJsQG9ubWFpbGZsYXJlLmNvbSIsInJvbGUiOiJzdXBlcl9hZG1pbiIsInZlcmlmaWVkIjp0cnVlLCJjcmVhdGVkQXQiOiIyMDI1LTEwLTE1VDA5OjUxOjU4LjI2NFoiLCJ1cGRhdGVkQXQiOiIyMDI1LTEwLTE1VDExOjE3OjIyLjM4MVoiLCJzdHVkZW50UHJvZmlsZSI6bnVsbCwic3RhZmZQcm9maWxlIjpudWxsLCJwYXJlbnRQcm9maWxlIjpudWxsLCJzdXBlckFkbWluUHJvZmlsZSI6eyJpZCI6IjEyNzZiOTU5LTJmZGMtNDY4ZC04MTJhLTUzYjlhODczNmIxNiIsInVzZXJJZCI6IjUxNzdiNmZlLTY2ZDctNDQzMS1hNjliLTdhNWE3ZjliYWMwYiIsImZpcnN0TmFtZSI6IlRlbWl0b3BlIiwibGFzdE5hbWUiOiJEYXJhbW9sYSIsIm9mZmljZSI6bnVsbCwiY3JlYXRlZEF0IjoiMjAyNS0xMC0xNVQwOTo1MTo1OC4yNjRaIiwidXBkYXRlZEF0IjoiMjAyNS0xMC0xNVQwOTo1MTo1OC4yNjRaIn19LCJuYW1lIjoiYWNjZXNzIiwiaWF0IjoxNzYxMjI1MDE3LCJleHAiOjE3NjE4Mjk4MTd9.CULctrpkyzvHar5RRX615Z0cpH7t8l3jVhFJX4Q4KNE
+
+{
+    "schoolId": "0a236092-e56b-4692-a00b-5b5a39b8e253",
+    "name": "SSS_ONE",
+    "sections": ["A", "B", "C", "D"]
+}
+
+
+# UPDATE#
+###############################################
+PUT http://localhost:3000/api/class
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiNTE3N2I2ZmUtNjZkNy00NDMxLWE2OWItN2E1YTdmOWJhYzBiIiwiZW1haWwiOiJtOWlrZXJsQG9ubWFpbGZsYXJlLmNvbSIsInJvbGUiOiJzdXBlcl9hZG1pbiIsInZlcmlmaWVkIjp0cnVlLCJjcmVhdGVkQXQiOiIyMDI1LTEwLTE1VDA5OjUxOjU4LjI2NFoiLCJ1cGRhdGVkQXQiOiIyMDI1LTEwLTE1VDExOjE3OjIyLjM4MVoiLCJzdHVkZW50UHJvZmlsZSI6bnVsbCwic3RhZmZQcm9maWxlIjpudWxsLCJwYXJlbnRQcm9maWxlIjpudWxsLCJzdXBlckFkbWluUHJvZmlsZSI6eyJpZCI6IjEyNzZiOTU5LTJmZGMtNDY4ZC04MTJhLTUzYjlhODczNmIxNiIsInVzZXJJZCI6IjUxNzdiNmZlLTY2ZDctNDQzMS1hNjliLTdhNWE3ZjliYWMwYiIsImZpcnN0TmFtZSI6IlRlbWl0b3BlIiwibGFzdE5hbWUiOiJEYXJhbW9sYSIsIm9mZmljZSI6bnVsbCwiY3JlYXRlZEF0IjoiMjAyNS0xMC0xNVQwOTo1MTo1OC4yNjRaIiwidXBkYXRlZEF0IjoiMjAyNS0xMC0xNVQwOTo1MTo1OC4yNjRaIn19LCJuYW1lIjoiYWNjZXNzIiwiaWF0IjoxNzYxMjI1MDE3LCJleHAiOjE3NjE4Mjk4MTd9.CULctrpkyzvHar5RRX615Z0cpH7t8l3jVhFJX4Q4KNE
+
+{
+    "id": "a5d5aa67-8cf3-4584-bd23-deebf0522efa",
+    "sections": ["A", "B", "C", "D", "E", "F"]
+}
+
+###################################
+#### DELETE http://localhost:3000/api/class/:id
+###############################################
+DELETE http://localhost:3000/api/class/21280dfc-a25a-4245-b931-1bacf7c0074b
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiNTE3N2I2ZmUtNjZkNy00NDMxLWE2OWItN2E1YTdmOWJhYzBiIiwiZW1haWwiOiJtOWlrZXJsQG9ubWFpbGZsYXJlLmNvbSIsInJvbGUiOiJzdXBlcl9hZG1pbiIsInZlcmlmaWVkIjp0cnVlLCJjcmVhdGVkQXQiOiIyMDI1LTEwLTE1VDA5OjUxOjU4LjI2NFoiLCJ1cGRhdGVkQXQiOiIyMDI1LTEwLTE1VDExOjE3OjIyLjM4MVoiLCJzdHVkZW50UHJvZmlsZSI6bnVsbCwic3RhZmZQcm9maWxlIjpudWxsLCJwYXJlbnRQcm9maWxlIjpudWxsLCJzdXBlckFkbWluUHJvZmlsZSI6eyJpZCI6IjEyNzZiOTU5LTJmZGMtNDY4ZC04MTJhLTUzYjlhODczNmIxNiIsInVzZXJJZCI6IjUxNzdiNmZlLTY2ZDctNDQzMS1hNjliLTdhNWE3ZjliYWMwYiIsImZpcnN0TmFtZSI6IlRlbWl0b3BlIiwibGFzdE5hbWUiOiJEYXJhbW9sYSIsIm9mZmljZSI6bnVsbCwiY3JlYXRlZEF0IjoiMjAyNS0xMC0xNVQwOTo1MTo1OC4yNjRaIiwidXBkYXRlZEF0IjoiMjAyNS0xMC0xNVQwOTo1MTo1OC4yNjRaIn19LCJuYW1lIjoiYWNjZXNzIiwiaWF0IjoxNzYxMjI1MDE3LCJleHAiOjE3NjE4Mjk4MTd9.CULctrpkyzvHar5RRX615Z0cpH7t8l3jVhFJX4Q4KNE
+
+###################################
+#### GET http://localhost:3000/api/class/all/:schoolId
+###############################################
+GET http://localhost:3000/api/class/all/0a236092-e56b-4692-a00b-5b5a39b8e253
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiNTE3N2I2ZmUtNjZkNy00NDMxLWE2OWItN2E1YTdmOWJhYzBiIiwiZW1haWwiOiJtOWlrZXJsQG9ubWFpbGZsYXJlLmNvbSIsInJvbGUiOiJzdXBlcl9hZG1pbiIsInZlcmlmaWVkIjp0cnVlLCJjcmVhdGVkQXQiOiIyMDI1LTEwLTE1VDA5OjUxOjU4LjI2NFoiLCJ1cGRhdGVkQXQiOiIyMDI1LTEwLTE1VDExOjE1OjIxLjM4NVoiLCJzdHVkZW50UHJvZmlsZSI6bnVsbCwic3RhZmZQcm9maWxlIjpudWxsLCJwYXJlbnRQcm9maWxlIjpudWxsLCJzdXBlckFkbWluUHJvZmlsZSI6eyJpZCI6IjEyNzZiOTU5LTJmZGMtNDY4ZC04MTJhLTUzYjlhODczNmIxNiIsInVzZXJJZCI6IjUxNzdiNmZlLTY2ZDctNDQzMS1hNjliLTdhNWE3ZjliYWMwYiIsImZpcnN0TmFtZSI6IlRlbWl0b3BlIiwibGFzdE5hbWUiOiJEYXJhbW9sYSIsIm9mZmljZSI6bnVsbCwiY3JlYXRlZEF0IjoiMjAyNS0xMC0xNVQwOTo1MTo1OC4yNjRaIiwidXBkYXRlZEF0IjoiMjAyNS0xMC0xNVQwOTo1MTo1OC4yNjRaIn19LCJuYW1lIjoiYWNjZXNzIiwiaWF0IjoxNzYwNTI3MDQyLCJleHAiOjE3NjExMzE4NDJ9.t919eWce-n4767ESKB4jRL_w_JqoGxDLxXYxsO8Kg7o
+
+###################################
+#### GET http://localhost:3000/api/class/all/:id
+###############################################
+GET http://localhost:3000/api/class/info/a5d5aa67-8cf3-4584-bd23-deebf0522efa
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiNTE3N2I2ZmUtNjZkNy00NDMxLWE2OWItN2E1YTdmOWJhYzBiIiwiZW1haWwiOiJtOWlrZXJsQG9ubWFpbGZsYXJlLmNvbSIsInJvbGUiOiJzdXBlcl9hZG1pbiIsInZlcmlmaWVkIjp0cnVlLCJjcmVhdGVkQXQiOiIyMDI1LTEwLTE1VDA5OjUxOjU4LjI2NFoiLCJ1cGRhdGVkQXQiOiIyMDI1LTEwLTE1VDExOjE1OjIxLjM4NVoiLCJzdHVkZW50UHJvZmlsZSI6bnVsbCwic3RhZmZQcm9maWxlIjpudWxsLCJwYXJlbnRQcm9maWxlIjpudWxsLCJzdXBlckFkbWluUHJvZmlsZSI6eyJpZCI6IjEyNzZiOTU5LTJmZGMtNDY4ZC04MTJhLTUzYjlhODczNmIxNiIsInVzZXJJZCI6IjUxNzdiNmZlLTY2ZDctNDQzMS1hNjliLTdhNWE3ZjliYWMwYiIsImZpcnN0TmFtZSI6IlRlbWl0b3BlIiwibGFzdE5hbWUiOiJEYXJhbW9sYSIsIm9mZmljZSI6bnVsbCwiY3JlYXRlZEF0IjoiMjAyNS0xMC0xNVQwOTo1MTo1OC4yNjRaIiwidXBkYXRlZEF0IjoiMjAyNS0xMC0xNVQwOTo1MTo1OC4yNjRaIn19LCJuYW1lIjoiYWNjZXNzIiwiaWF0IjoxNzYwNTI3MDQyLCJleHAiOjE3NjExMzE4NDJ9.t919eWce-n4767ESKB4jRL_w_JqoGxDLxXYxsO8Kg7o
+
