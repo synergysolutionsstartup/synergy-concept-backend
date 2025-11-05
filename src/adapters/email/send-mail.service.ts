@@ -1,6 +1,5 @@
 import { transporter } from "@src/adapters/email/email.config";
 
-
 interface Params {
   senderName: string;
   senderEmail: string;

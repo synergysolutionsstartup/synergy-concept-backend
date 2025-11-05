@@ -1,4 +1,5 @@
 // YUP VALIDATOR IMPLEMENTATION
+import { AppError } from "@src/common/error/AppError";
 import * as yup from "yup";
 export const Yup = yup;
 
@@ -12,18 +13,31 @@ export const validatePayload = async (schema: any, data: any) => {
 
     await schema?.validate(data, { abortEarly: false, strict: true });
 
-       // // CHECK IF THE ERROR UNKNOWN FIELDS ARE PRESENT
+    // // CHECK IF THE ERROR UNKNOWN FIELDS ARE PRESENT
     // // 1️⃣ Get allowed keys directly from the schema shape
     // // 2️⃣ Find unknown keys in the incoming data
-    const allowedKeys = Object.keys(schema.fields);
+
+    const allowedKeysSet = new Set<string>();
+
+    if (Array.isArray((schema as any)?._nodes)) {
+      (schema as any)._nodes.forEach((k: string) => allowedKeysSet.add(k));
+    }
+    const allowedKeys = Array.from(allowedKeysSet);
+
+    // const allowedKeys = Object.keys(schema.describe().fields);
     const unknownKeys = Object.keys(data).filter(
       (key) => !allowedKeys.includes(key)
     );
-    const message = `Fields can only inlude these fields [${allowedKeys.join(",")}]`;
+    // console.log("Allowed keys ", allowedKeys)
+    // console.log("unknown keys ", unknownKeys)
+    const message = `Fields can only inlude these fields [${allowedKeys.join(
+      ","
+    )}]`;
     if (unknownKeys.length > 0) {
-      const data = {unknown:message }
-   
-      throw data;
+      const data = { unknown: message };
+
+      const appError = new AppError(message, 400, data);
+      throw appError;
     }
   } catch (error) {
     // console.log("yup error ", error);

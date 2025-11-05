@@ -8,8 +8,8 @@ import { middlewares } from "@src/middleware/_index";
 
 // MODULE IMPORTS
 import { SchoolInfoDao } from "@src/modules/school-info/dao/_index";
-import { dtoSchemaRepo } from "@src/modules/school-info/validator/_index";
 import { SchoolInfoController } from "@src/modules/school-info/controllers/_index";
+import { dtoSchemaRepo } from "@src/modules/school-info/validator/_index";
 
 // Initilize PROPS AND Dependencies
 const router = express.Router();
@@ -27,13 +27,14 @@ const constants = common.constants;
 // destructure dto schemas
 const { createSchool, updateSchool, readSchoolInfo } = dtoSchemaRepo;
 
+
 // create the dto middlewares
 const createSchoolMiddleware = validateDto(
   createSchool,
   validator.validatePayload
 );
 const updateSchoolMiddleware = validateDto(
-  updateSchool,
+  dtoSchemaRepo.updateSchool,
   validator.validatePayload
 );
 const readSchoolInfoMiddleware = validateDto(

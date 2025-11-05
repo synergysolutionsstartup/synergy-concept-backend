@@ -6,8 +6,7 @@ const { Yup } = validator;
 
 
 const readSchoolInfoDtoSchema = Yup.object({
-  id: Yup.string().optional(),
-  userId: Yup.string().optional(),
+  id: Yup.string().required("school id is required"),
 });
 
 const createSchoolDtoSchema = Yup.object({
