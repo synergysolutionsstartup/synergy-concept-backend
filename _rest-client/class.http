@@ -2,8 +2,8 @@
 
 # CREATE
 ###############################################
-POST http://localhost:3000/api/class
-# POST http://synergy-concept-backend.onrender.com/api/class
+# POST http://localhost:3000/api/class
+POST http://synergy-concept-backend.onrender.com/api/class
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiMjM1ZjMxMDQtNWZjNS00MjJkLTllMGEtNGQ2MzdiZDMwMGI0IiwiZW1haWwiOiJqZGYxenhtMmZiQHduYmFsZHd5LmNvbSIsInJvbGUiOiJzdXBlcl9hZG1pbiIsInNjaG9vbElkIjoiMGI5NzI2OGMtYzM0YS00MDQxLWFhZDEtZDVmMjEyZWMwOTY0IiwidmVyaWZpZWQiOnRydWUsImNyZWF0ZWRBdCI6IjIwMjUtMTEtMDVUMTM6Mzc6NTQuMjUwWiIsInVwZGF0ZWRBdCI6IjIwMjUtMTEtMDVUMTM6Mzc6NTQuMjUwWiIsInN0dWRlbnRQcm9maWxlIjpudWxsLCJzdGFmZlByb2ZpbGUiOm51bGwsInBhcmVudFByb2ZpbGUiOm51bGwsInN1cGVyQWRtaW5Qcm9maWxlIjp7ImlkIjoiMTIyNzg5MTAtNTI1NS00Njg2LTkwYmMtMWM5NTRkNzBjOTRhIiwidXNlcklkIjoiMjM1ZjMxMDQtNWZjNS00MjJkLTllMGEtNGQ2MzdiZDMwMGI0IiwiZmlyc3ROYW1lIjoiVGVtaXRvcGUiLCJsYXN0TmFtZSI6IkRhcmFtb2xhIiwiZ2VuZGVyIjpudWxsLCJjcmVhdGVkQXQiOiIyMDI1LTExLTA1VDEzOjM3OjU0LjI1MFoiLCJ1cGRhdGVkQXQiOiIyMDI1LTExLTA1VDEzOjM3OjU0LjI1MFoifX0sIm5hbWUiOiJhY2Nlc3MiLCJpYXQiOjE3NjIzNDk5NzEsImV4cCI6MTc2Mjk1NDc3MX0.yacPnDd614oH0v8ICN7Q9BF_bn1_04bTSgnkOK9ESgg
 
