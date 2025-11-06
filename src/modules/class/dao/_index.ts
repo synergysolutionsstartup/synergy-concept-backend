@@ -13,7 +13,6 @@ type SchoolInfoEntity = SchoolInfoTypes.Entities.SchoolInfoEntity;
 const { DatabaseError } = Errors;
 type DbClient = typeof db.dbClient;
 
-
 export function ClassDao(prismaClient: DbClient, parseDbError: any) {
   return {
     // ✅ Create Class
@@ -197,6 +196,21 @@ export function ClassDao(prismaClient: DbClient, parseDbError: any) {
         return result as unknown as ClassEntity[];
       } catch (error) {
         // console.log("findClassByUserId Error ", error);
+        const { message, statusCode } = parseDbError(error);
+        throw new DatabaseError(message, statusCode, error);
+      }
+    },
+
+    // ------------------ Find one session with dynamic filters ------------------
+    async findOne(
+      filters: Partial<Prisma.ClassWhereInput>
+    ): Promise<ClassEntity | null> {
+      try {
+        const result = await prismaClient.class.findFirst({
+          where: filters,
+        });
+        return result as unknown as ClassEntity;
+      } catch (error) {
         const { message, statusCode } = parseDbError(error);
         throw new DatabaseError(message, statusCode, error);
       }

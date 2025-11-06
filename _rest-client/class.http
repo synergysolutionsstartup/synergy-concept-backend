@@ -3,6 +3,7 @@
 # CREATE
 ###############################################
 POST http://localhost:3000/api/class
+# POST http://synergy-concept-backend.onrender.com/api/class
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiMjM1ZjMxMDQtNWZjNS00MjJkLTllMGEtNGQ2MzdiZDMwMGI0IiwiZW1haWwiOiJqZGYxenhtMmZiQHduYmFsZHd5LmNvbSIsInJvbGUiOiJzdXBlcl9hZG1pbiIsInNjaG9vbElkIjoiMGI5NzI2OGMtYzM0YS00MDQxLWFhZDEtZDVmMjEyZWMwOTY0IiwidmVyaWZpZWQiOnRydWUsImNyZWF0ZWRBdCI6IjIwMjUtMTEtMDVUMTM6Mzc6NTQuMjUwWiIsInVwZGF0ZWRBdCI6IjIwMjUtMTEtMDVUMTM6Mzc6NTQuMjUwWiIsInN0dWRlbnRQcm9maWxlIjpudWxsLCJzdGFmZlByb2ZpbGUiOm51bGwsInBhcmVudFByb2ZpbGUiOm51bGwsInN1cGVyQWRtaW5Qcm9maWxlIjp7ImlkIjoiMTIyNzg5MTAtNTI1NS00Njg2LTkwYmMtMWM5NTRkNzBjOTRhIiwidXNlcklkIjoiMjM1ZjMxMDQtNWZjNS00MjJkLTllMGEtNGQ2MzdiZDMwMGI0IiwiZmlyc3ROYW1lIjoiVGVtaXRvcGUiLCJsYXN0TmFtZSI6IkRhcmFtb2xhIiwiZ2VuZGVyIjpudWxsLCJjcmVhdGVkQXQiOiIyMDI1LTExLTA1VDEzOjM3OjU0LjI1MFoiLCJ1cGRhdGVkQXQiOiIyMDI1LTExLTA1VDEzOjM3OjU0LjI1MFoifX0sIm5hbWUiOiJhY2Nlc3MiLCJpYXQiOjE3NjIzNDk5NzEsImV4cCI6MTc2Mjk1NDc3MX0.yacPnDd614oH0v8ICN7Q9BF_bn1_04bTSgnkOK9ESgg
 
@@ -34,12 +35,12 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiN
 ###################################
 #### GET http://localhost:3000/api/class/all/:schoolId
 ###############################################
-GET http://localhost:3000/api/class/all/0a236092-e56b-4692-a00b-5b5a39b8e253
+# GET http://localhost:3000/api/class/all/0b97268c-c34a-4041-aad1-d5f212ec0964
+GET http://synergy-concept-backend.onrender.com/api/class/all/0b97268c-c34a-4041-aad1-d5f212ec0964
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiNTE3N2I2ZmUtNjZkNy00NDMxLWE2OWItN2E1YTdmOWJhYzBiIiwiZW1haWwiOiJtOWlrZXJsQG9ubWFpbGZsYXJlLmNvbSIsInJvbGUiOiJzdXBlcl9hZG1pbiIsInZlcmlmaWVkIjp0cnVlLCJjcmVhdGVkQXQiOiIyMDI1LTEwLTE1VDA5OjUxOjU4LjI2NFoiLCJ1cGRhdGVkQXQiOiIyMDI1LTEwLTE1VDExOjE1OjIxLjM4NVoiLCJzdHVkZW50UHJvZmlsZSI6bnVsbCwic3RhZmZQcm9maWxlIjpudWxsLCJwYXJlbnRQcm9maWxlIjpudWxsLCJzdXBlckFkbWluUHJvZmlsZSI6eyJpZCI6IjEyNzZiOTU5LTJmZGMtNDY4ZC04MTJhLTUzYjlhODczNmIxNiIsInVzZXJJZCI6IjUxNzdiNmZlLTY2ZDctNDQzMS1hNjliLTdhNWE3ZjliYWMwYiIsImZpcnN0TmFtZSI6IlRlbWl0b3BlIiwibGFzdE5hbWUiOiJEYXJhbW9sYSIsIm9mZmljZSI6bnVsbCwiY3JlYXRlZEF0IjoiMjAyNS0xMC0xNVQwOTo1MTo1OC4yNjRaIiwidXBkYXRlZEF0IjoiMjAyNS0xMC0xNVQwOTo1MTo1OC4yNjRaIn19LCJuYW1lIjoiYWNjZXNzIiwiaWF0IjoxNzYwNTI3MDQyLCJleHAiOjE3NjExMzE4NDJ9.t919eWce-n4767ESKB4jRL_w_JqoGxDLxXYxsO8Kg7o
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiMjM1ZjMxMDQtNWZjNS00MjJkLTllMGEtNGQ2MzdiZDMwMGI0IiwiZW1haWwiOiJqZGYxenhtMmZiQHduYmFsZHd5LmNvbSIsInJvbGUiOiJzdXBlcl9hZG1pbiIsInNjaG9vbElkIjoiMGI5NzI2OGMtYzM0YS00MDQxLWFhZDEtZDVmMjEyZWMwOTY0IiwidmVyaWZpZWQiOnRydWUsImNyZWF0ZWRBdCI6IjIwMjUtMTEtMDVUMTM6Mzc6NTQuMjUwWiIsInVwZGF0ZWRBdCI6IjIwMjUtMTEtMDVUMTM6Mzc6NTQuMjUwWiIsInN0dWRlbnRQcm9maWxlIjpudWxsLCJzdGFmZlByb2ZpbGUiOm51bGwsInBhcmVudFByb2ZpbGUiOm51bGwsInN1cGVyQWRtaW5Qcm9maWxlIjp7ImlkIjoiMTIyNzg5MTAtNTI1NS00Njg2LTkwYmMtMWM5NTRkNzBjOTRhIiwidXNlcklkIjoiMjM1ZjMxMDQtNWZjNS00MjJkLTllMGEtNGQ2MzdiZDMwMGI0IiwiZmlyc3ROYW1lIjoiVGVtaXRvcGUiLCJsYXN0TmFtZSI6IkRhcmFtb2xhIiwiZ2VuZGVyIjpudWxsLCJjcmVhdGVkQXQiOiIyMDI1LTExLTA1VDEzOjM3OjU0LjI1MFoiLCJ1cGRhdGVkQXQiOiIyMDI1LTExLTA1VDEzOjM3OjU0LjI1MFoifX0sIm5hbWUiOiJhY2Nlc3MiLCJpYXQiOjE3NjIzNDk5NzEsImV4cCI6MTc2Mjk1NDc3MX0.yacPnDd614oH0v8ICN7Q9BF_bn1_04bTSgnkOK9ESgg
 ###################################
-#### GET http://localhost:3000/api/class/all/:id
+#### GET http://localhost:3000/api/class/info/:id
 ###############################################
 GET http://localhost:3000/api/class/info/a5d5aa67-8cf3-4584-bd23-deebf0522efa
 Content-Type: application/json

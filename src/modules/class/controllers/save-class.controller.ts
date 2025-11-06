@@ -37,6 +37,15 @@ export const saveClassController = async (props: Props) => {
     message = "Bad Request. School Id does not exist";
     if (!schoolInfo) throw new AppError(message, 400);
 
+    // check 4
+    // check if the class with the same name and schoolId already exist
+    const filterPayload = { schoolId: body.schoolId, name: body.name };
+    const existingClass = await dao.findOne(filterPayload);
+    if (existingClass) {
+      message = "Class with the name already exist. Please use another name";
+      throw new AppError(message, 400);
+    }
+
     const recordPayload: NewClassRecord = { ...body };
     result = await dao.create(recordPayload);
     message = "Class was created successfully";
