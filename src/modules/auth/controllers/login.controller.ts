@@ -26,7 +26,7 @@ export const loginController = async (props: Props) => {
     const { dao, body } = props;
 
     const { verifyPassword } = common.utils.hash;
-    const { signJwtToken, verifyJwtToken } = common.utils.tokens;
+    const { signJwtToken } = common.utils.tokens;
     const { jwtExpiry, jwtKeys, userRole } = common.constants;
     const { authMessage } = authConstants;
     const { findAccountByEmail } = props.dao;
@@ -60,13 +60,34 @@ export const loginController = async (props: Props) => {
         jwtExpiry,
         true
       );
+      if (
+        refreshToken.error ||
+        !refreshToken.data ||
+        accessToken.error ||
+        !accessToken.data
+      ) {
+        console.error(
+          "Login token generation failed",
+          refreshToken.error ?? accessToken.error
+        );
+        throw new AppError(
+          "Unable to login due to a server error. Please try again later.",
+          500
+        );
+      }
       const updatePayload: UpdateAccountRecord = {
         refreshToken: refreshToken.data,
       };
       await dao.updateAccount(user.id, updatePayload);
+
+      const loginMessage =
+        user.role === common.constants.userRole.admin && !user.isApproved
+          ? authMessage.loginPendingApproval
+          : authMessage.loginSuccess;
+
       return {
         status: "success",
-        message: authMessage.loginSuccess,
+        message: loginMessage,
         data: { account: accountResponse, token: accessToken.data },
       };
     }
@@ -83,11 +104,8 @@ export const loginController = async (props: Props) => {
     const createSaveAndSendVerificationToken =
       authServices.createSaveAndSendVerificationToken;
 
-    // ========================================================================================================================
-    // IF VERIFICATION TOKEN DOES NOT EXIST
-    // check if the verificationToken does not exist for the user
     if (!user.verificationToken || user.verificationToken === "") {
-      console.log("verificationToken dosen't exist.....getting new one");
+      console.log("verification code doesn't exist.....getting new one");
       const userProfile = AuthMapper.getAccountProfile(user, userRole);
       await createSaveAndSendVerificationToken(
         email,
@@ -98,36 +116,24 @@ export const loginController = async (props: Props) => {
       return responseData;
     }
 
-    // IF VERIFICATION TOKEN HAS EXPIRED
-    // then send another one to the user else don't send another one
-    const verificationTokenVerifyResult: Record<string, any> = verifyJwtToken(
-      user.verificationToken,
-      jwtKeys.auth,
-      jwtKeys
+    const isExpired =
+      !user.verificationTokenExpiresAt ||
+      new Date(user.verificationTokenExpiresAt) < new Date();
+    if (isExpired) {
+      console.log("current verification code expired.....getting new one");
+      const userProfile = AuthMapper.getAccountProfile(user, userRole);
+      await createSaveAndSendVerificationToken(
+        email,
+        userProfile.firstName,
+        user.id,
+        dao.updateAccount
+      );
+      return responseData;
+    }
+
+    console.log(
+      "current verification code is still valid...user should check their email"
     );
-
-    if (verificationTokenVerifyResult.error) {
-      const { error } = verificationTokenVerifyResult;
-      // IF ERROR IS NOT AN EXPIRY ERROR....THEN THROW A LOGIN ERROR
-      if (error?.name !== "TokenExpiredError") {
-        throw new AppError(authMessage.serverError, 500);
-      }
-
-      // GENERATE, SAVE TO DB, AND SEND NEW TOKEN HERE
-      console.log("current verification token expired.....getting new one");
-      const userProfile = AuthMapper.getAccountProfile(user, userRole);
-      await createSaveAndSendVerificationToken(
-        email,
-        userProfile.firstName,
-        user.id,
-        dao.updateAccount
-      );
-      return responseData;
-    }
-
-    console.log("current verification has not expired...user should check their email");
-    // IF VERIFICTION TOKEN HAS NOT EXPIRED THEN USER SHOULD CHECK THEIR EMAIL FOR THE
-    // TOKEN ALREADY SENT TO VERIFY THEIR EMAIL....NO NEED TO SEND A NEW ONE UNLESS THEY REQUEST FROM THE FRONT END
     return responseData;
   } catch (error) {
     if (error instanceof DatabaseError || error instanceof AppError) {

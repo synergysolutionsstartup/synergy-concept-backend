@@ -14,7 +14,9 @@ const authMessage = {
   invalidCredentials: "Invalid email or password. Please try again",
   loginSuccess: "Login successful. You can now access your dashboard",
   loginNotVerified:
-    "Login successful. Please verify your email to access your dashboard",
+    "Login successful. Please verify your account to access dashboard. Check your email for a verification code",
+  loginPendingApproval:
+    "Login successful. Account is pending Approval. You will be notified upon approval",
   signupSuccess:
     "Account has been created. Please verify your email to access your account",
 };
@@ -50,7 +52,12 @@ const resetEmailAddressMailContent = {
 };
 
 // TOKEN CONSTANTS
-const jwtExpiry = { access: "7d", refresh: "14d", auth: "30m" };
+const jwtExpiry = {
+  access: process.env.JWT_ACCESS_EXPIRES_IN || "7d",
+  refresh: process.env.JWT_REFRESH_EXPIRES_IN || "14d",
+  auth: process.env.VERIFICATION_TOKEN_EXPIRES_IN || "30m",
+  resetPass: process.env.PASSWORD_RESET_TOKEN_EXPIRES_IN || "30m",
+};
 const jwtNames = {
   access: "access",
   refresh: "refresh",
@@ -58,12 +65,18 @@ const jwtNames = {
   resetPass: "reset-password",
 };
 
+const otpExpiry = {
+  verification: Number(process.env.VERIFICATION_OTP_TTL_MS) || 24 * 60 * 60 * 1000,
+  passwordReset: Number(process.env.PASSWORD_RESET_OTP_TTL_MS) || 60 * 60 * 1000,
+};
+
 export const authConstants = {
   authMessage,
   jwtExpiry,
   jwtNames,
+  otpExpiry,
   verifyAccountMailContent,
   resetEmailAddressMailContent,
   resetPasswordMailContent,
-  mailProps
+  mailProps,
 };

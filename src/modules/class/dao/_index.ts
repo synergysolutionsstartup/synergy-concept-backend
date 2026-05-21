@@ -22,7 +22,7 @@ export function ClassDao(prismaClient: DbClient, parseDbError: any) {
         // console.log("createClass dao payload", payload)
         let message = "";
         const result = await prismaClient.$transaction(
-          async (tx) => {
+          async (tx: any) => {
             // 1️⃣ Find baseclass
             let baseClass = await tx.class.findUnique({
               where: { schoolId_name: { schoolId, name } },
@@ -85,7 +85,7 @@ export function ClassDao(prismaClient: DbClient, parseDbError: any) {
         console.log("update dao payload ", updates);
 
         const result = await prismaClient.$transaction(
-          async (tx) => {
+          async (tx: any) => {
             // 1️⃣ Update basic class info (if any field like `name` is provided)
             if (name) {
               await tx.class.update({
@@ -100,15 +100,15 @@ export function ClassDao(prismaClient: DbClient, parseDbError: any) {
               select: { section: true },
             });
 
-            const existingSectionNames = existingSections.map((s) => s.section);
+            const existingSectionNames = existingSections.map((s: any) => s.section);
 
             // 3️⃣ Determine which sections to delete and which to add
             const newSectionNames = sections || [];
             const toDelete = existingSectionNames.filter(
-              (section) => !newSectionNames.includes(section)
+              (section: any) => !newSectionNames.includes(section)
             );
             const toAdd = newSectionNames.filter(
-              (section) => !existingSectionNames.includes(section)
+              (section: any) => !existingSectionNames.includes(section)
             );
 
             // 4️⃣ Delete old sections not in new array

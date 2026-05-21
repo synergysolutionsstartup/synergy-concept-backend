@@ -11,12 +11,21 @@ type AccountResponseDTO = AccountTypes.Dtos.AccountResponseDTO;
 const mapAccountEntityToResponseDto = (
   user: AccountEntity
 ): AccountResponseDTO => {
-  const { verificationToken, refreshToken, password, ...account } = user;
+  const {
+    verificationToken,
+    verificationTokenExpiresAt,
+    refreshToken,
+    passwordResetToken,
+    passwordResetTokenExpiresAt,
+    password,
+    ...account
+  } = user;
   return account;
 };
 
 interface  UserRole {
-  superAdmin: string; 
+  superAdmin: string;
+  admin: string;
   staff: string;
   student: string;
   parent: string;
@@ -33,6 +42,8 @@ const getAccountProfile = (
   switch (user.role) {
     case userRole.superAdmin:
       return user.superAdminProfile!;
+    case userRole.admin:
+      return user.adminProfile!;
     case userRole.student:
       return user.studentProfile!;
     case userRole.staff:

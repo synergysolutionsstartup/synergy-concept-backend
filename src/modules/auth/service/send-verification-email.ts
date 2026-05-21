@@ -1,34 +1,22 @@
 export const sendVerificationEmail = async ({
-  constants,
   token,
-  userFirstName,
   userEmail,
   sendEmail,
   getEmailTemplate,
+  senderName,
+  senderEmail,
 }: any) => {
   try {
-    const { mailProps, verifyAccountMailContent } = constants;
-
-    // CREATE THE VERIFICATION LINK
-    const verificationLink = verifyAccountMailContent.url + token;
-
-    // SETUP THE EMAIL TEMPLATE
-    const templatePayload = {
-      ...verifyAccountMailContent,
-      url: verificationLink,
-      receiverName: userFirstName,
-    };
-    const emailBody = getEmailTemplate(templatePayload);
+    const emailPayload = getEmailTemplate(userEmail, token);
 
     const mailServicePayload = {
-      senderName: mailProps.appName,
-      senderEmail: mailProps.appEmail,
-      subject: verifyAccountMailContent.header,
-      body: emailBody,
+      senderName,
+      senderEmail,
+      subject: emailPayload.subject,
+      body: emailPayload.html,
       destEmail: userEmail,
     };
 
-    // NEXT SEND EMAIL TO THE USER CONTAINEING THE VERIFICATION LINK
     const isSent = await sendEmail(mailServicePayload);
     if (isSent.error) return { error: true };
     return { data: true };

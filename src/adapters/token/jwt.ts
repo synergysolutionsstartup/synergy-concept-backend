@@ -21,6 +21,7 @@ export const signJwtToken = (
     const result = jwt.sign(data, secret, options);
     return { data: result };
   } catch (error) {
+    console.error("JWT sign error", error);
     return { error };
   }
 };
@@ -34,10 +35,9 @@ export const verifyJwtToken = (
     const secret = getTokenSecret(name, jwtKeys);
     if (!secret) throw "Invalid token name";
     const decoded = jwt.verify(token, secret) as Record<string, any>;
-    // console.log('decoded token data', decoded);
     return { data: decoded.data };
   } catch (error) {
-    // console.log("verify jwt error ", error);
+    console.error("JWT verify error", error);
     return { error: error };
   }
 };
@@ -47,16 +47,18 @@ const getJwtExpiry = (
   jwtKeys: Record<string, any>,
   jwtExpiry: Record<string, any>
 ): any => {
-  // type must be a union of access refresh, signup, login
+  // type must be a union of access refresh, signup, login, reset-password
   if (name == jwtKeys.access) return jwtExpiry.access;
   if (name == jwtKeys.refresh) return jwtExpiry.refresh;
+  if (name == jwtKeys.resetPass) return jwtExpiry.resetPass;
   return jwtExpiry.auth;
 };
 
 const getTokenSecret = (name: string, jwtKeys: Record<string, any>) => {
-  // type must be a union of access refresh, signin
-  if (name == jwtKeys.access) return process.env.JWT_SECRET_ACCESS;
-  if (name == jwtKeys.refresh) return process.env.JWT_SECRET_REFRESH;
-  if (name == jwtKeys.auth) return process.env.JWT_SECRET_AUTH;
+  // type must be a union of access refresh, signin, reset-password
+  if (name == jwtKeys.access) return process.env.JWT_ACCESS_SECRET;
+  if (name == jwtKeys.refresh) return process.env.JWT_REFRESH_SECRET;
+  if (name == jwtKeys.auth || name == jwtKeys.resetPass)
+    return process.env.JWT_ACCESS_SECRET;
   return null;
 };

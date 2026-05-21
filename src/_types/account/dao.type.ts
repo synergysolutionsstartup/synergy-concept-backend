@@ -15,6 +15,9 @@ export interface AuthDaoType {
   deleteAccount(id: string): Promise<AccountEntity | null>;
   findAccountById(id: string): Promise<AccountEntity | null>;
   findAccountByEmail(email: string): Promise<AccountEntity | null>;
+  readAdminAccounts(): Promise<AccountEntity[]>;
+  readAccountsByRoles(roles: string[]): Promise<AccountEntity[]>;
+  approveManyAdmins(ids: string[]): Promise<AccountEntity[]>;
 }
 
 // To be used for creating admins, teachers, etc. and managing accounts

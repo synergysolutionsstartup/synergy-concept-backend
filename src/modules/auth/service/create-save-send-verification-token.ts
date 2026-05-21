@@ -3,11 +3,11 @@ import { authConstants } from "@src/modules/auth/constants";
 import { sendVerificationEmail } from "@src/modules/auth/service/send-verification-email";
 import { authUtils } from "@src/modules/auth/utils/_index";
 
-const AppError =   common.errors.AppError;
+const AppError = common.errors.AppError;
 
-// THIS GENERATES A NEW VERIFICTION TOKEN
+// THIS GENERATES A NEW VERIFICATION CODE
 // SAVES IT TO THE DATABASE
-// THEN SENDS THE TOKEN TO THE USER E-MAIL
+// THEN SENDS THE CODE TO THE USER EMAIL
 export const createSaveAndSendVerificationToken = async (
   email: string,
   firstName: string,
@@ -15,43 +15,36 @@ export const createSaveAndSendVerificationToken = async (
   updateVerificationToken: any
 ) => {
   const emailService = common.services.email;
-  const { signJwtToken } = common.utils.tokens;
-  const { jwtExpiry, jwtKeys } = common.constants;
 
-  // USE THE EMAIL OF THE USER TO CREATE A verifyJwtToken string
-  const verifyJWTPayload = { email };
-  const verifyJwtToken = signJwtToken(
-    verifyJWTPayload,
-    jwtKeys.auth,
-    jwtKeys,
-    jwtExpiry,
-    true
-  );
-
-  if (verifyJwtToken.error || !verifyJwtToken.data) {
-    throw new AppError(authConstants.authMessage.serverError);
+  const verificationCode = authUtils.generateOTP();
+  if (!verificationCode) {
+    console.error("Verification code generation failed");
+    throw new AppError(
+      "Unable to process verification request due to a server error. Please try again later."
+    );
   }
-  // save the newly generated verificationToken to the db
-  const updatePayload = { verificationToken: verifyJwtToken.data };
+
+  const updatePayload = {
+    verificationToken: verificationCode,
+    verificationTokenExpiresAt: new Date(
+      Date.now() + authConstants.otpExpiry.verification
+    ),
+  };
   const updateResult = await updateVerificationToken(id, updatePayload);
   if (updateResult.error) {
     throw new AppError(authConstants.authMessage.serverError);
   }
 
-  // SEND THE VERIFICATION EMAIL
   const verifyEmailPayload = {
-    constants: authConstants,
-    token: verifyJwtToken.data,
-    userFirstName: firstName,
+    token: verificationCode,
     userEmail: email,
-    getEmailTemplate: authUtils.getEmailTemplate,
+    getEmailTemplate: authUtils.buildVerificationEmail,
     sendEmail: emailService.sendSingleRecipient,
+    senderName: authConstants.mailProps.appName ?? "BizFlow",
+    senderEmail: authConstants.mailProps.appEmail ?? "no-reply@bizflow.com",
   };
-  // NEXT SEND EMAIL TO THE USER CONTAINEING THE GENERATED VERIFICATION LINK
-  const mailResult = await sendVerificationEmail(
-    verifyEmailPayload
-  );
 
+  const mailResult = await sendVerificationEmail(verifyEmailPayload);
   if (mailResult.error) {
     throw new AppError(authConstants.authMessage.serverError, 500);
   }

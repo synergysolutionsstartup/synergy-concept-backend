@@ -1,37 +1,25 @@
-// DATAASE INDEX.TS FILE
-// Export out the correct database implementation you want the application to use
-// either mongoose/mongodb or prisma
+// DATABASE INDEX.TS FILE
+// Export out the current database implementation in use.
+// The database implementation folders contain the concrete adapters.
 
-import { PrismaClient, Prisma } from "@src/database/client";
-import {
-  connectDB,
-  dbClient,
-  shutdownDB,
-  parseDbError
-} from "@src/database/prisma/connection";
- import { AppDao , AppDaoFactory} from "@src/database/prisma/dao/_index";
-
-
-type PrismaType  = typeof Prisma
+import { db as mongooseDb } from "@src/database/mongoose/index";
 export type { Prisma } from "@src/database/client";
 
 export interface Database {
   connectDB: () => Promise<void>;
-  dbClient: PrismaClient;
-  Prisma: PrismaType,
+  dbClient: any;
+  Prisma?: any;
   shutdownDB: () => Promise<void>;
-  parseDbError: (error: any)=> Record<string, any>,
-  AppDao: AppDaoFactory
-  //   dbClient: unknown; // fallback if you don’t want strict typing
+  parseDbError: (error: any) => Record<string, any>;
+  AppDao: any;
 }
 
 export const db: Database = {
-  connectDB: () => connectDB(),
-  dbClient: dbClient,
-  shutdownDB,
-  Prisma,
-  parseDbError,
-  AppDao,
+  connectDB: mongooseDb.connectDB,
+  dbClient: mongooseDb.dbClient,
+  shutdownDB: mongooseDb.shutdownDB,
+  parseDbError: mongooseDb.parseDbError,
+  AppDao: mongooseDb.AppDao,
 };
 
 

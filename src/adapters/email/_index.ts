@@ -1,7 +1,7 @@
-import { sendSingleRecipient } from "@src/adapters/email/send-mail.service";
-import { sendMultipleRecipients } from "@src/adapters/email/send-multiple-recipients.service";
+import { sendSingleRecipient as sendSingleRecipientBrevo } from "@src/adapters/email/brevo-send-mail.service";
+import { sendMultipleRecipients as sendMultipleRecipientsBrevo } from "@src/adapters/email/brevo-send-multiple-recipients.service";
 
 export const emailService = {
-  sendSingleRecipient,
-  sendMultipleRecipients
+  sendSingleRecipient: sendSingleRecipientBrevo,
+  sendMultipleRecipients: sendMultipleRecipientsBrevo,
 };

@@ -27,7 +27,7 @@ export const resendVerificationEmailController = async (props: Props) => {
     // TO REQUEST A NEW TOKEN TO SAVE RESOURCES(TO DO)
 
     const { dao, email } = props;
-    const { signJwtToken, verifyJwtToken } = common.utils.tokens;
+    const { signJwtToken } = common.utils.tokens;
     const { jwtExpiry, jwtKeys } = common.constants;
     const { authMessage } = authConstants;
     const { findAccountByEmail } = props.dao;
@@ -54,6 +54,21 @@ export const resendVerificationEmailController = async (props: Props) => {
         jwtExpiry,
         true
       );
+      if (
+        refreshToken.error ||
+        !refreshToken.data ||
+        accessToken.error ||
+        !accessToken.data
+      ) {
+        console.error(
+          "Resend verification token generation failed",
+          refreshToken.error ?? accessToken.error
+        );
+        throw new AppError(
+          "Unable to resend verification email due to a server error. Please try again later.",
+          500
+        );
+      }
       const updatePayload: UpdateAccountRecord = {
         refreshToken: refreshToken.data,
       };
@@ -68,10 +83,10 @@ export const resendVerificationEmailController = async (props: Props) => {
     const userRole = common.constants.userRole;
     const userProfile = AuthMapper.getAccountProfile(user, userRole);
 
-    // CHECK IF A VERIFICATION TOKEN EXIST
-    // IF IT DOES NOT THEN GENERATE ANOTHER ONE, SAVE TO DB, & SEND EMAIL,
+    // CHECK IF A VERIFICATION TOKEN EXISTS
+    // IF IT DOES NOT THEN GENERATE ANOTHER ONE, SAVE TO DB, & SEND EMAIL
     if (!user.verificationToken) {
-          console.log("verificationToken does not exist....generating new one");
+      console.log("verificationToken does not exist....generating new one");
       await authServices.createSaveAndSendVerificationToken(
         email,
         userProfile.firstName,
@@ -81,7 +96,26 @@ export const resendVerificationEmailController = async (props: Props) => {
 
       const responseData = {
         status: "success",
-        message: "Verification link has been re-sent to your email address.",
+        message: "Verification code has been re-sent to your email address.",
+        data: null,
+      };
+      return responseData;
+    }
+
+    const isExpired =
+      !user.verificationTokenExpiresAt ||
+      new Date(user.verificationTokenExpiresAt) < new Date();
+    if (isExpired) {
+      console.log("verification code expired....generating new one");
+      await authServices.createSaveAndSendVerificationToken(
+        email,
+        userProfile.firstName,
+        user.id,
+        dao.updateAccount
+      );
+      const responseData = {
+        status: "success",
+        message: "Verification code has been re-sent to your email address.",
         data: null,
       };
       return responseData;
@@ -91,7 +125,7 @@ export const resendVerificationEmailController = async (props: Props) => {
     // if false return a message to the user saying wait at least a minute
     const isTimePassed = authUtils.hasMinutesPassed(user.updatedAt, 1);
     if (!isTimePassed) {
-        console.log("verificationToken exist but not up to a minute");
+      console.log("verificationToken exist but not up to a minute");
       const responseData = {
         status: "success",
         message:
@@ -101,10 +135,8 @@ export const resendVerificationEmailController = async (props: Props) => {
       return responseData;
     }
 
-
-
     console.log("verificationToken exist but more than a minute");
-  // if true then repeat the genreate process
+    // if true then repeat the generate process
     await authServices.createSaveAndSendVerificationToken(
       email,
       userProfile.firstName,
@@ -113,7 +145,7 @@ export const resendVerificationEmailController = async (props: Props) => {
     );
     const responseData = {
       status: "success",
-      message: "Verification link has been re-sent to your email address.",
+      message: "Verification code has been re-sent to your email address.",
       data: null,
     };
     return responseData;

@@ -2,6 +2,7 @@
 
 // RECORDS TYPES FILE
 import {
+  AdminProfileEntity,
   StudentProfileEntity,
   StaffProfileEntity,
   ParentProfileEntity,
@@ -13,6 +14,11 @@ import { UserRole } from "@src/_types/account/enums.type";
 
 
 // ------------------ PROFILE INPUTS ------------------
+export type NewAdminProfileInput = Omit<
+  AdminProfileEntity,
+  "id" | "userId" | "createdAt" | "updatedAt"
+>;
+
 export type NewStudentProfileInput = Omit<
   StudentProfileEntity,
   "id" | "userId" | "createdAt" | "updatedAt"
@@ -42,6 +48,9 @@ type NewAccountBase = {
   verified?: boolean;
   refreshToken?: string | null;
   verificationToken?: string | null;
+  verificationTokenExpiresAt?: Date | null;
+  passwordResetToken?: string | null;
+  passwordResetTokenExpiresAt?: Date | null;
 };
 
 export type NewSuperAdminAccount = NewAccountBase & {
@@ -49,7 +58,10 @@ export type NewSuperAdminAccount = NewAccountBase & {
   superAdminProfile: NewSuperAdminProfileInput;
 };
 
-
+export type NewAdminAccount = NewAccountBase & {
+  role: UserRole.Admin;
+  adminProfile: NewAdminProfileInput;
+};
 
 export type NewStaffAccount = NewAccountBase & {
   role: UserRole.Staff;
@@ -69,10 +81,12 @@ export type NewParentAccount = NewAccountBase & {
 
 
 export interface NewAccountRecord extends NewAccountBase {
+  adminProfile?: NewAdminProfileInput;
   superAdminProfile?: NewSuperAdminProfileInput;
   staffProfile?: NewStaffProfileInput;
   studentProfile?: NewStudentProfileInput;
   parentProfile?: NewParentProfileInput;
+  schoolId?: string;
 }
 
 
