@@ -4,13 +4,11 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon -r tsconfig-paths/register --watch src src/index.ts",
-    "prisma:generate": "prisma generate",
-    "build": "tsc --project tsconfig.json && npx tsc-alias --project tsconfig.json && cpx \"src/database/client/**/*\" dist/database/client",
+    "build": "tsc --project tsconfig.json && npx tsc-alias --project tsconfig.json",
     "start": "node -r module-alias/register dist/index.js"
   },
   "dependencies": {
     "@getbrevo/brevo": "^2.0.0-beta.4",
-    "@prisma/client": "^6.16.3",
     "axios": "^1.7.2",
     "bcryptjs": "^3.0.2",
     "body-parser": "^1.20.3",
@@ -35,9 +33,7 @@
     "@types/jsonwebtoken": "^9.0.10",
     "@types/morgan": "^1.9.10",
     "@types/nodemailer": "^7.0.1",
-    "cpx": "^1.5.0",
     "nodemon": "^3.1.10",
-    "prisma": "^6.16.2",
     "ts-node": "^10.9.2",
     "ts-node-dev": "^2.0.0",
     "tsc-alias": "^1.8.16",

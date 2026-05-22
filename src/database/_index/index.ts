@@ -8,7 +8,6 @@ export type { Prisma } from "@src/database/client";
 export interface Database {
   connectDB: () => Promise<void>;
   dbClient: any;
-  Prisma?: any;
   shutdownDB: () => Promise<void>;
   parseDbError: (error: any) => Record<string, any>;
   AppDao: any;
