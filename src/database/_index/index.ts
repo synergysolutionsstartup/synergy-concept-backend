@@ -3,8 +3,6 @@
 // The database implementation folders contain the concrete adapters.
 
 import { db as mongooseDb } from "@src/database/mongoose/index";
-export type { Prisma } from "@src/database/client";
-
 export interface Database {
   connectDB: () => Promise<void>;
   dbClient: any;
